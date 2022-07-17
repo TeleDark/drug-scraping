@@ -11,7 +11,9 @@ BOT_NAME = 'gmu'
 FEED_EXPORT_ENCODING = 'utf-8'
 SPIDER_MODULES = ['gmu.spiders']
 NEWSPIDER_MODULE = 'gmu.spiders'
-
+FEED_EXPORTERS = {
+    'xlsx': 'scrapy_xlsx.XlsxItemExporter',
+}
 #Splash Setup
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
