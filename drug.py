@@ -1,9 +1,10 @@
 import scrapy
-
+from scrapy.crawler import CrawlerProcess
 class DrugSpider(scrapy.Spider):
+    
     name = 'drug'
-    start_urls = [
-        'https://mosbatesabz.com/']
+    def start_requests(self):
+        yield scrapy.Request('https://mosbatesabz.com/')
         
 
     def parse(self, response):
@@ -28,3 +29,10 @@ class DrugSpider(scrapy.Spider):
                 'review': products.xpath('//div[contains(@id, "tab-description")]/div[contains(@class,"wc-tab-inner")]/p/text()').extract_first(),
                 'drug_property' : '، '.join(drug_property)
             }
+process = CrawlerProcess(settings={
+    'FEED_URI': 'drug_info.csv',
+    'FEED_FORMAT': 'csv'
+})
+
+process.crawl(DrugSpider)
+process.start()
