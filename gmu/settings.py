@@ -8,10 +8,11 @@
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
 BOT_NAME = 'gmu'
-
+FEED_EXPORT_ENCODING = 'utf-8'
 SPIDER_MODULES = ['gmu.spiders']
 NEWSPIDER_MODULE = 'gmu.spiders'
 
+#Splash Setup
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'gmu (+http://www.yourdomain.com)'
